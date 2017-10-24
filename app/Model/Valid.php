@@ -15,7 +15,7 @@ class Valid extends AppModel {
 				"message" => "Name not empty",
 			),
 			"email" => array(
-				"rule" => "notEmpty",
+				"rule" => "notBlank",
 				"message" => "Email not empty",
 			),
 		);

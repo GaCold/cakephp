@@ -14,7 +14,7 @@ class ValidsController extends AppController
 			if($this->Valid->setValidate())
 				$this->Session->setFlash('Du lieu hop le');
 			else
-				$this->Session->setFlash('Du lieu khong hop le');
+				$this->Session->setFlash('Du lieu khong hop le', 'error');
 		}
 	}
 
