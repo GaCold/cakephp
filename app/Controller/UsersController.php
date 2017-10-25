@@ -15,6 +15,10 @@ class UsersController extends AppController {
  */
 	public $components = array('Paginator');
 
+	public function beforeFilter() {
+		parent::beforeFilter();
+	}
+
 /**
  * index method
  *
@@ -100,5 +104,11 @@ class UsersController extends AppController {
 			$this->Flash->error(__('The user could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
+	}
+
+
+	public function login() {
+		$this->set('title', 'login user');
+		echo "string";
 	}
 }

@@ -32,7 +32,36 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-	public $components = array('Data', 'Session');
-
 	public $layout = 'main';
+	public $components = array(
+		'Session',
+		'Auth' => array(
+			'authenticate' => array(
+				'Form' => array(
+					'userModel' => 'User',
+					'fields' => array(
+						'username' => 'username',
+						'password' => 'password'
+					),
+					'scope' => array('User.active' => '1')
+				)
+			),
+			'loginRedirect' => array('controller' => 'users', 'action' => 'index'),
+			'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
+			'loginAction' => array('admin' => false, 'controller' => 'users', 'action' => 'login'),
+			'authError' => 'Check logged in.',
+			'loginError' => 'Invalid Username or Password',
+		),
+	);
+
+
+	public function beforeFilter()
+    {
+        //allow functions access without login
+        $this->Auth->allow('login', 'forgotPassword');
+        //set appliction time zone
+        Configure::write('Config.timezone', $this->Session->read('Auth.User.timezone'));
+        Configure::write('Config.language', $this->Session->read('Auth.User.language'));
+    }
+
 }

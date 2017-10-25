@@ -22,8 +22,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo $this->fetch('title'); ?>
+		<!-- <?php //echo $cakeDescription ?>:
+		<?php //echo $this->fetch('title'); ?> -->
+		<?php $this->assign('title', $post); ?>
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
@@ -33,6 +34,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
+		echo $this->element('admin/head');
 	?>
 </head>
 <body>
