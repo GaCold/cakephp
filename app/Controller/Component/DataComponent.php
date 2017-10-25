@@ -20,6 +20,11 @@ class DataComponent extends Object
 	}
 	function redirectSomewhere($value) {
 	}
+
+
+	function have() {
+		return true;
+	}
 	public function randd($option=12){
 		$int = rand(0,10);
 		$a_z = "01234567891";
